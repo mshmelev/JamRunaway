@@ -9,7 +9,7 @@ namespace JamRunaway.Tests
 	public class TracksFinderTest
 	{
 		[TestMethod]
-		public void ExtractWayPoints_TestEmpty()
+		public void FindTracks_TestEmpty()
 		{
 			var gpsTracks= TracksFinder.FindTracks(new List<WayPoint>());
 			Assert.AreEqual(0, gpsTracks.Count);
@@ -20,7 +20,7 @@ namespace JamRunaway.Tests
 
 
 		[TestMethod]
-		public void ExtractWayPoints_TestSingleTrack()
+		public void FindTracks_TestSingleTrack()
 		{
 			var gpsTracks = TracksFinder.FindTracks(new List<WayPoint> {
 				new WayPoint(0, 0, DateTime.Now),
@@ -34,7 +34,7 @@ namespace JamRunaway.Tests
 
 
 		[TestMethod]
-		public void ExtractWayPoints_TestMultipleTracks()
+		public void FindTracks_TestMultipleTracks()
 		{
 			var gpsTracks = TracksFinder.FindTracks(new List<WayPoint> {
 				new WayPoint(0, 0, DateTime.Now),
