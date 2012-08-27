@@ -1,50 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
+using System.IO;
 using SharpKml.Base;
 using SharpKml.Dom;
 using SharpKml.Dom.GX;
 using SharpKml.Engine;
 
-namespace JamRunaway.BL
+namespace JamRunaway.BL.GeoFileParsers
 {
-	public class Class1
+	public class KmlParser : IGeoFileParser
 	{
-		public static void ExtractWayPoints()
+
+		public List<WayPoint> ExtractWayPoints(Stream input)
 		{
-			var kmlFile = KmlFile.Load(@"d:\aaa.kml");
+			var kmlFile = KmlFile.Load(input);
 			if (!(kmlFile.Root is Kml))
-				return;
+				return new List<WayPoint>();
 
 			var placemarks = new List<Placemark>();
 			ExtractPlacemarks(((Kml)kmlFile.Root).Feature, placemarks);
 
-			var tracks= new List<Track>();
+			var tracks = new List<Track>();
 			foreach (var placemark in placemarks)
 				ExtractTracks(placemark.Geometry, tracks);
 
+			return ExtractWayPoints(tracks);
+		}
+
+
+		private static List<WayPoint> ExtractWayPoints(IEnumerable<Track> tracks)
+		{
 			var wayPoints = new List<WayPoint>();
 			foreach (var track in tracks)
 			{
 				DateTime? time = null;
-				var children= track.GetChildElements();
+				var children = track.GetChildElements();
 				foreach (var child in children)
 				{
 					if (child is DateTime)
-						time = (DateTime)child;
-					else if (child is Vector && time!= null)
+					{
+						time = (DateTime) child;
+					}
+					else if (child is Vector && time != null)
+					{
 						wayPoints.Add(new WayPoint
 							{
-								Latitude = (decimal)((Vector)child).Latitude,
-								Longitude = (decimal)((Vector)child).Longitude,
+								Latitude = (decimal) ((Vector) child).Latitude,
+								Longitude = (decimal) ((Vector) child).Longitude,
 								Time = time.Value
 							});
+					}
 				}
-
-				//track.Children
 			}
+
+			return wayPoints;
 		}
 
 
@@ -74,9 +83,6 @@ namespace JamRunaway.BL
 					ExtractTracks(childGeometry, tracks);
 			}
 		}
-
-
-
 
 
 	}

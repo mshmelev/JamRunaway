@@ -10,7 +10,6 @@ namespace JamRunaway.Web.Controllers
     {
         public ActionResult Index()
         {
-			BL.Class1.ExtractWayPoints();
             return View("Index");
         }
 
