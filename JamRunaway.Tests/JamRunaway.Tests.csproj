@@ -100,8 +100,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeoFileParsers\KmlParserTest.cs" />
+    <Compile Include="GpsTrackTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TracksFinderTest.cs" />
+    <Compile Include="GeoToolsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

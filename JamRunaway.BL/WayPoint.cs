@@ -9,11 +9,12 @@ namespace JamRunaway.BL
 			
 		}
 
-		public WayPoint(decimal longitude, decimal latitude, DateTime time)
+		public WayPoint(decimal longitude, decimal latitude, DateTime time, decimal speed= 0)
 		{
 			Longitude = longitude;
 			Latitude = latitude;
 			Time = time;
+			Speed = speed;
 		}
 
 
@@ -35,6 +36,17 @@ namespace JamRunaway.BL
 			set;
 		}
 
+
+		/// <summary>
+		/// Speed in m/s
+		/// </summary>
+		public decimal Speed
+		{
+			get;
+			set;
+		}
+
+
 		public override bool Equals(object obj)
 		{
 			if (ReferenceEquals(null, obj)) return false;
@@ -46,7 +58,10 @@ namespace JamRunaway.BL
 
 		protected bool Equals(WayPoint other)
 		{
-			return Latitude == other.Latitude && Longitude == other.Longitude && Time.Equals(other.Time);
+			return Latitude == other.Latitude 
+				&& Longitude == other.Longitude
+				&& Time.Equals(other.Time)
+				&& Speed== other.Speed;
 		}
 
 
@@ -57,6 +72,7 @@ namespace JamRunaway.BL
 				int hashCode = Latitude.GetHashCode();
 				hashCode = (hashCode * 397) ^ Longitude.GetHashCode();
 				hashCode = (hashCode * 397) ^ Time.GetHashCode();
+				hashCode = (hashCode * 397) ^ Speed.GetHashCode();
 				return hashCode;
 			}
 		}

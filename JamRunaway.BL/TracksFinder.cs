@@ -40,7 +40,7 @@ namespace JamRunaway.BL
 		private static void AddGpsTrack(List<WayPoint> trackPoints, List<GpsTrack> gpsTracks)
 		{
 			if (trackPoints.Count > 1)
-				gpsTracks.Add(new GpsTrack {WayPoints = trackPoints});
+				gpsTracks.Add(new GpsTrack (trackPoints));
 		}
 	}
 }

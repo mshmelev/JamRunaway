@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="GeoFileParsers\IGeoFileParser.cs" />
     <Compile Include="GeoFileParsers\KmlParser.cs" />
+    <Compile Include="GeoTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GpsTrack.cs" />
     <Compile Include="TracksFinder.cs" />
