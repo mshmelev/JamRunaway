@@ -1,5 +1,5 @@
 ﻿@using JamRunaway.BL
-@model List<GpsTrack>
+@model String
 @{
 	ViewBag.Title= "Jam Runaway";
 }
@@ -10,44 +10,15 @@
 @section scripts
 {
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="~/Scripts/geo/GeoConverter.js"></script>
+<script src="~/Scripts/geo/WayPoint.js"></script>
+<script src="~/Scripts/geo/GpsTrack.js"></script>
+<script src="~/Scripts/geo/TrackAnalyzer.js"></script>
 
 <script type="text/javascript">
-	var map;
-	function initialize() {
-		var mapOptions = {
-			zoom: 10,
-			center: new google.maps.LatLng(43.785175, -79.341235),
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	var gpsTracksJson = @Html.Raw(Model);
 
-		/*google.maps.event.addListener(kmlLayer, 'click', function (kmlEvent) {
-			kmlEvent.arguments(
-			var text = kmlEvent.featureData.description;
-			alert(text);
-		});*/
-
-		var polyline = new google.maps.Polyline({
-			path: [
-				@for (int i= 0; i< Model[0].WayPoints.Count; ++i)
-				{
-					@:new google.maps.LatLng(@Model[0].WayPoints[i].Latitude, @Model[0].WayPoints[i].Longitude)
-					if (i< Model[0].WayPoints.Count-1)
-					{
-						@:,
-					}
-				}
-			],
-			map: map,
-			strokeColor: "#ff0000",
-			strokeOpacity: 0.7,
-			strokeWeight: 2
-		});
-	
-	}
-
-	google.maps.event.addDomListener(window, 'load', initialize);
-
+	TrackAnalyzer.init(gpsTracksJson, "map-canvas");
 
 </script>
 }

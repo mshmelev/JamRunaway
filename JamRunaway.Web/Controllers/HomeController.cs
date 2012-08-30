@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace JamRunaway.Web.Controllers
 {
@@ -13,7 +14,10 @@ namespace JamRunaway.Web.Controllers
         {
 	        BL.GeoFileParsers.IGeoFileParser geoFileParser = new BL.GeoFileParsers.KmlParser();
 			var gpsTracks = BL.TracksFinder.FindTracks(geoFileParser.ExtractWayPoints(System.IO.File.OpenRead(@"d:\aaa.kml")));
-            return View("Index", gpsTracks);
+
+			JavaScriptSerializer serializer = new JavaScriptSerializer();
+	        string json = serializer.Serialize(gpsTracks);
+			return View("Index", (object)json);
         }
 
     }
