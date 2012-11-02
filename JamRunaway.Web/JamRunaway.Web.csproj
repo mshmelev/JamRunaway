@@ -215,6 +215,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Tests\geo\GpsTrack.tests.js" />
     <Content Include="Scripts\Tests\geo\WayPoint.tests.js" />
     <Content Include="Scripts\Tests\qunit.css" />
     <Content Include="Scripts\Tests\qunit.extensions.js" />

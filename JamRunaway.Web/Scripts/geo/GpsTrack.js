@@ -27,7 +27,7 @@
 			
 
 			///
-			///
+			/// diameter is in meters
 			///
 			findNearestWayPoint: function (latLng, diameter)
 			{
@@ -52,7 +52,7 @@
 
 
 			///
-			///
+			/// diameter is in meters
 			///
 			findWayPointIndex: function (latLng, diameter)
 			{
@@ -67,6 +67,10 @@
 			},
 			
 
+
+			///
+			///
+			///
 			calcPathStats: function (wpIndex1, wpIndex2)
 			{
 				if (wayPoints[wpIndex1].time > wayPoints[wpIndex2].time)		// wrong direction
