@@ -152,11 +152,11 @@
 			var res = gpsTracks[i].calcPathStats(pos1, pos2);
 			if (res)
 			{
-				alert("Total Distance: " + GeoConverter.toKm (res.totalDistance) +
-					"\nMax Speed: " + GeoConverter.toKmh (res.maxSpeed) +
-					"\nMin Speed: " + GeoConverter.toKmh (res.minSpeed)+
-					"\nAvg Speed: " + GeoConverter.toKmh (res.avgSpeed)+
-					"\nTime: " + GeoConverter.toDuration (res.duration));
+				alert("Total Distance: " + GeoFormatter.toKm (res.totalDistance) +
+					"\nMax Speed: " + GeoFormatter.toKmh (res.maxSpeed) +
+					"\nMin Speed: " + GeoFormatter.toKmh (res.minSpeed)+
+					"\nAvg Speed: " + GeoFormatter.toKmh (res.avgSpeed)+
+					"\nTime: " + GeoFormatter.toDuration (res.duration));
 			}
 			
 

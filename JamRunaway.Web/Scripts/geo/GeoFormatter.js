@@ -1,4 +1,4 @@
-﻿var GeoConverter =
+﻿var GeoFormatter =
 {
 	///
 	/// Converts speed from m/s to km/h

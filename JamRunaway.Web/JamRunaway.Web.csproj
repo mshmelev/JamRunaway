@@ -215,6 +215,12 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Tests\qunit.css" />
+    <Content Include="Scripts\Tests\qunit.extensions.js" />
+    <Content Include="Scripts\Tests\qunit.js" />
+    <Content Include="Scripts\Tests\sinon-1.5.0.js" />
+    <Content Include="Scripts\Tests\sinon-qunit-1.0.0.js" />
+    <Content Include="Scripts\Tests\Tests.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -232,6 +238,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\Tests\geo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
